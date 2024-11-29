@@ -1,37 +1,53 @@
 let humanScore = 0;
-let computerSCore = 0;
+let computerScore = 0;
 
-function getComputerChoice(){
-    const randomNum = Math.floor(Math.random() * 3);
-    
-    if (randomNum === 0){
-        computerChoice = "rock";
+function playRound(humanSelection, computerSelection){
+
+    console.log("Starting round...")
+    if(humanSelection === "rock" && computerSelection === "scissors" || humanSelection === "paper" && computerSelection === "rock" || humanSelection === "scissors" && computerSelection === "paper"){
+        humanScore++
+        console.log("Human wins: " + humanScore);
     }
-    else if (randomNum === 1){
-        computerChoice = "paper"
+    else if(computerSelection === "rock" && humanSelection === "scissors" || computerSelection === "paper" && humanSelection === "rock" || computerSelection === "scissors" && humanSelection === "paper"){
+        computerScore++
+        console.log("Computer wins: " + computerScore);
     }
-    else {
-         computerChoice = "scissors"
+    else{
+        console.log("It's a draw!")
     }
-    console.log("Computer Choose: " + randomNum)
-    return computerChoice
+    console.log("Round over!");
 }
 
-function getHumanChoice (){ 
-        let userChoice = prompt("Choose rock, paper or scissors!").toLowerCase();
+function getComputerChoice() {
+  const randomNum = Math.floor(Math.random() * 3);
+  let computerChoice;
 
-        if (userChoice === "paper" || userChoice === "rock" || userChoice === "scissors"){
-            console.log("User Choose: " + userChoice);
-        }
-        else{
-            userChoice = prompt("Invalid Choice choose rock, paper or scissors!");
-        }
-        
-      
-    
-    
+  if (randomNum === 0) {
+    computerChoice = "rock";
+  } else if (randomNum === 1) {
+    computerChoice = "paper";
+  } else {
+    computerChoice = "scissors";
+  }
+  console.log("Computer Choose: " + computerChoice);
+  return computerChoice;
 }
 
+function getHumanChoice() {
+  let humanChoice = prompt("Choose rock, paper or scissors!").toLowerCase();
 
-getComputerChoice();
-getHumanChoice();
+  if (
+    humanChoice === "paper" ||
+    humanChoice === "rock" ||
+    humanChoice === "scissors"
+  ) {
+    console.log("User Choose: " + humanChoice);
+    return humanChoice;
+  } else {
+    humanChoice = prompt("Invalid Choice choose rock, paper or scissors!");
+  }
+}
+
+const computerSelection = getComputerChoice();
+const humanSelection = getHumanChoice();
+playRound(humanSelection, computerSelection)
