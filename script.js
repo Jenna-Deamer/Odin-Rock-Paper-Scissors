@@ -1,3 +1,11 @@
+// Get buttons
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+// Get score labels
+const humanScoreLabel = document.querySelector('#human-score');
+const pcScoreLabel = document.querySelector('#pc-score');
+
 let humanScore = 0;
 let computerScore = 0;
 
@@ -48,6 +56,6 @@ function getHumanChoice() {
   }
 }
 
-const computerSelection = getComputerChoice();
-const humanSelection = getHumanChoice();
-playRound(humanSelection, computerSelection)
+// const computerSelection = getComputerChoice();
+// const humanSelection = getHumanChoice();
+// playRound(humanSelection, computerSelection)
