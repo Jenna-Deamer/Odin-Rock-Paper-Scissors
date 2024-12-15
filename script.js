@@ -37,13 +37,17 @@ const RoundInfoLabel = document.querySelector("#round-info")
   
   function playRound(humanSelection, computerSelection){
     console.log("Starting round...");
+    RoundInfoLabel.textContent = "";
         if (
           (humanSelection === "rock" && computerSelection === "scissors") ||
           (humanSelection === "paper" && computerSelection === "rock") ||
           (humanSelection === "scissors" && computerSelection === "paper")
         ) {
           humanScore++;
-          humanLabel.textContent = "Human: " + humanLabel;
+          humanLabel.textContent = "You: " + humanScore;
+          round++;
+          roundLabel.textContent = "You Win"
+          roundLabel.textContent = "Round " + round + " of 5";
         } else if (
           (computerSelection === "rock" && humanSelection === "scissors") ||
           (computerSelection === "paper" && humanSelection === "rock") ||
@@ -51,22 +55,34 @@ const RoundInfoLabel = document.querySelector("#round-info")
         ) {
           computerScore++;
           pcLabel.textContent = "PC: " + computerScore;
+          roundLabel.textContent = "PC Wins!"
+          round++;
+          roundLabel.textContent = "Round " + round + " of 5";
         } else {
           console.log("It's a draw!");
           RoundInfoLabel.textContent = "Its a Draw!"
+          round++;
+          roundLabel.textContent = "Round " + round + " of 5";
         }
       
         // Check for winner at the end of round 5
         if (round === 5 && humanScore > computerScore) {
-          console.log("Human Wins with " + humanScore + " points!");
-          RoundInfoLabel.textContent = "Human Wins with " + humanScore + " points!";
+          console.log("You Won with " + humanScore + " points!");
+          RoundInfoLabel.textContent = "You Won with " + humanScore + " points!";
+          round = 0;
+          humanScore = 0;
+          computerScore = 0;
         } else if (round === 5 && computerScore > humanScore) {
           console.log("PC Wins with " + computerScore + " points!");
           RoundInfoLabel.textContent = "PC Wins with " + computerScore + " points!"
+          round = 0;
+          humanScore = 0;
+          computerScore = 0;
         } else {
           console.log("Round " + round + " over!");
-          console.log("Human Score: " + humanScore + " PC Score: " + computerScore);
+          console.log("Your Score: " + humanScore + " PC Score: " + computerScore);
         }
+
   }
 
 
