@@ -16,6 +16,7 @@ const scissorsBtn = document.querySelector("#scissors").addEventListener('click'
 const humanLabel = document.querySelector("#human-score-label");
 const pcLabel = document.querySelector("#pc-score-label");
 const roundLabel = document.querySelector("#round-label");
+const RoundInfoLabel = document.querySelector("#round-info")
 
   function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3);
@@ -42,32 +43,29 @@ const roundLabel = document.querySelector("#round-label");
           (humanSelection === "scissors" && computerSelection === "paper")
         ) {
           humanScore++;
-          console.log("Human wins");
-          humanLabel.textContent = "PC: " + humanLabel;
+          humanLabel.textContent = "Human: " + humanLabel;
         } else if (
           (computerSelection === "rock" && humanSelection === "scissors") ||
           (computerSelection === "paper" && humanSelection === "rock") ||
           (computerSelection === "scissors" && humanSelection === "paper")
         ) {
           computerScore++;
-          console.log("Computer wins");
           pcLabel.textContent = "PC: " + computerScore;
         } else {
           console.log("It's a draw!");
+          RoundInfoLabel.textContent = "Its a Draw!"
         }
       
         // Check for winner at the end of round 5
         if (round === 5 && humanScore > computerScore) {
           console.log("Human Wins with " + humanScore + " points!");
-          humanLabel.textContent = "Human Wins with " + humanScore + " points!";
+          RoundInfoLabel.textContent = "Human Wins with " + humanScore + " points!";
         } else if (round === 5 && computerScore > humanScore) {
           console.log("PC Wins with " + computerScore + " points!");
-          pcLabel.textContent = "PC Wins with " + computerScore + " points!"
+          RoundInfoLabel.textContent = "PC Wins with " + computerScore + " points!"
         } else {
           console.log("Round " + round + " over!");
           console.log("Human Score: " + humanScore + " PC Score: " + computerScore);
-          pcLabel.textContent = "Its a Draw!"
-          humanLabel.textContent = "Its a Draw!"
         }
   }
 
